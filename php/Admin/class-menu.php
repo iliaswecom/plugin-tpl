@@ -47,7 +47,7 @@ class Menu {
 			'manage_options',
 			'plugin-tpl',
 			array( '\\Xkon\\Plugin_Tpl\\Admin\\Page', 'load' ),
-			'dashicons-yes-alt',
+			'dashicons-yes-alt'
 		);
 	}
 }
