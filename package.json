@@ -4,12 +4,15 @@
 	"description": "plugin template",
 	"license": "GPL-2.0-or-later",
 	"scripts": {
-		"lint:css": "stylelint \"**/*.css\" || echo ---",
-		"lint:js": "eslint \"**/*.js\" || echo ---",
-		"format:js": "eslint \"**/*.js\" --fix || echo ---",
-		"lint:php": "composer-runner lint",
-		"compat:php": "composer-runner compat",
-		"format:php": "composer-runner format"
+		"css_lint": "stylelint \"**/*.css\" || echo ---",
+		"css_fix": "stylelint \"**/*.css\" --fix || echo ---",
+		"js_lint": "eslint \"**/*.js\" || echo ---",
+		"js_fix": "eslint \"**/*.js\" --fix || echo ---",
+		"php_lint": "composer-runner lint",
+		"php_fix": "composer-runner fix",
+		"php_compat": "composer-runner compat",
+		"all_lint": "npm run php_lint && npm run js_lint && npm run css_lint",
+		"all_fix": "npm run php_fix && npm run js_fix && npm run css_fix"
 	},
 	"devDependencies": {
 		"@wordpress/eslint-plugin": "^8.0.2",
