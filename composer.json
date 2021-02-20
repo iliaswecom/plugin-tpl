@@ -1,0 +1,19 @@
+{
+	"name": "xkon/plugin-tpl",
+	"description": "plugin template",
+	"type": "project",
+	"license": "GPL-2.0-or-later",
+	"require": {
+		"php": ">=7.0"
+	},
+	"require-dev": {
+		"dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+		"wp-coding-standards/wpcs": "^2.3",
+		"phpcompatibility/phpcompatibility-wp": "^2.1"
+	},
+	"scripts": {
+		"compat": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs -p -s -v -n . --standard=PHPCompatibility --extensions=php --ignore=*/vendor/* --runtime-set testVersion 7.0-",
+		"format": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf -p -s -v -n . --standard=WordPress-Core --extensions=php --ignore=*/vendor/*",
+		"lint": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs -p -s -v -n . --standard=WordPress-Core --extensions=php --ignore=*/vendor/*"
+	}
+}
