@@ -1,4 +1,4 @@
-<?php
+<?php //phpcs:ignore -- \r\n notice.
 
 /**
  * This file comes with "plugin-tpl".
@@ -47,7 +47,7 @@ class Logger {
 			$message = print_r( $message, true );
 		}
 
-		$message = '[' . date( 'd-M-Y H:i:s' ) . '] ' . $message . PHP_EOL; // phpcs:ignore
+		$message = '[' . gmdate( 'd-M-Y H:i:s' ) . '] ' . $message . PHP_EOL;
 
 		try {
 			$fp = fopen( $log_file, 'a' );

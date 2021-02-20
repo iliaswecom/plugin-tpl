@@ -1,4 +1,4 @@
-<?php
+<?php //phpcs:ignore -- \r\n notice.
 
 /**
  * Plugin Name:       Plugin - Template

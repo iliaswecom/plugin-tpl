@@ -1,4 +1,4 @@
-<?php
+<?php //phpcs:ignore -- \r\n notice.
 
 /**
  * This file comes with "plugin-tpl".
