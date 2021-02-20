@@ -39,6 +39,7 @@ namespace Xkon;
  * Import necessary classes.
  */
 use Xkon\Plugin_Tpl\Admin\Menu;
+use Xkon\Plugin_Tpl\Logger;
 
 /**
  * Check that the file is not accessed directly.
@@ -75,7 +76,7 @@ class Plugin_Tpl {
 	/**
 	 * The plugin instanace.
 	 *
-	 * @var Plugin_Tpl $instance
+	 * @var null|Plugin_Tpl $instance
 	 */
 	private static $instance = null;
 
@@ -140,7 +141,11 @@ class Plugin_Tpl {
 				$class_path = implode( '/', $class_path );
 
 				// Setup the final file to require.
-				$file = self::$dir . '/php/' . $class_path . '/class-' . $class_file . '.php';
+				if ( empty( $class_path ) ) {
+					$file = self::$dir . '/php/' . '/class-' . $class_file . '.php';
+				} else {
+					$file = self::$dir . '/php/' . $class_path . '/class-' . $class_file . '.php';
+				}
 
 				// Load the class.
 				if ( file_exists( $file ) ) {
@@ -173,16 +178,6 @@ class Plugin_Tpl {
 	}
 
 	/**
-	 * Runs on plugin deactivation.
-	 */
-	public static function on_plugin_deactivation() {}
-
-	/**
-	 * Runs on plugin uninstall.
-	 */
-	public static function on_plugin_uninstall() {}
-
-	/**
 	 * Styles and scripts.
 	 *
 	 * @param string $hook_suffix
@@ -212,6 +207,18 @@ class Plugin_Tpl {
 			)
 		);
 	}
+
+	/**
+	 * Runs on plugin deactivation.
+	 */
+	public static function on_plugin_deactivation() {
+		Logger::log( 'Deactivating plugin.' );
+	}
+
+	/**
+	 * Runs on plugin uninstall.
+	 */
+	public static function on_plugin_uninstall() {}
 }
 
 /**
