@@ -1,0 +1,21 @@
+{
+	"name": "plugin-tpl",
+	"version": "1.0.0",
+	"description": "plugin template",
+	"license": "GPL-2.0-or-later",
+	"scripts": {
+		"lint:css": "stylelint \"**/*.css\" || echo ---",
+		"lint:js": "eslint \"**/*.js\" || echo ---",
+		"format:js": "eslint \"**/*.js\" --fix || echo ---",
+		"lint:php": "composer-runner lint",
+		"compat:php": "composer-runner compat",
+		"format:php": "composer-runner format"
+	},
+	"devDependencies": {
+		"@wordpress/eslint-plugin": "^8.0.2",
+		"@wordpress/stylelint-config": "^19.0.1",
+		"eslint": "^7.20.0",
+		"node-composer-runner": "^0.4.0",
+		"stylelint": "^13.11.0"
+	}
+}
