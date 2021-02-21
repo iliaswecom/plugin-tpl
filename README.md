@@ -1,6 +1,6 @@
 ## plugin-tpl
 
-A simple plugin template. Re-creating the same setup every time is annoying so I thought of creating an easy to use (for me) template.
+Re-creating the same setup every time is annoying so I thought of creating an easy to use (for me at least :D) template.
 
 ---
 
