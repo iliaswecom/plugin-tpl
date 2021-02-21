@@ -12,8 +12,8 @@
 		"phpcompatibility/phpcompatibility-wp": "^2.1"
 	},
 	"scripts": {
-		"compat": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs -p -s -v -n . --standard=PHPCompatibility --extensions=php --ignore=*/vendor/*,*/node_modules/* --runtime-set testVersion 7.0-",
-		"fix": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf -p -s -v -n . --standard=WordPress-Core --extensions=php --ignore=*/vendor/*,*/node_modules/*",
-		"lint": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs -p -s -v -n . --standard=WordPress-Core --extensions=php --ignore=*/vendor/*,*/node_modules/*"
+		"compat": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs -p -s -v -n ./src/ --standard=PHPCompatibility --extensions=php --runtime-set testVersion 7.0-",
+		"fix": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf -p -s -v -n ./src/ --standard=WordPress-Core --extensions=php",
+		"lint": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs -p -s -v -n ./src/ --standard=WordPress-Core --extensions=php"
 	}
 }
