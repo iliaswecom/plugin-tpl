@@ -13,7 +13,9 @@
 		"php_compat": "composer-runner compat",
 		"all_lint": "npm run php_lint && npm run js_lint && npm run css_lint",
 		"all_fix": "npm run php_fix && npm run js_fix && npm run css_fix",
-		"build": "copyfiles -u 1 \"src/**/*\" build/plugin-tpl"
+		"copy_to_build": "copyfiles -u 1 \"src/**/*\" build/plugin-tpl",
+		"zip_from_build": "npm-build-zip --source=build/plugin-tpl --destination=build/",
+		"build": "npm run copy_to_build && npm run zip_from_build"
 	},
 	"devDependencies": {
 		"@wordpress/eslint-plugin": "^8.0.2",
@@ -21,6 +23,7 @@
 		"copyfiles": "^2.4.1",
 		"eslint": "^7.20.0",
 		"node-composer-runner": "^0.4.0",
+		"npm-build-zip": "^1.0.3",
 		"stylelint": "^13.11.0"
 	}
 }
