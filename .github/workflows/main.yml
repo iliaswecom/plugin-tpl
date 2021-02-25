@@ -1,7 +1,7 @@
 name: Main_Checks
 on:
   push:
-    branches: 
+    branches:
       - main
 jobs:
   build:
@@ -22,9 +22,9 @@ jobs:
       run: |
         export SNIFFS_DIR=/tmp/sniffs
         php phpcs.phar --config-set installed_paths $SNIFFS_DIR/PHPCompatibility
-        php phpcs.phar -p -s -v -n . --standard=PHPCompatibility --extensions=php --runtime-set testVersion 7.0-
+        php phpcs.phar -p -s -v -n . --standard=phpcompat.xml.dist
     - name: WordPress Coding Standards
       run: |
         export SNIFFS_DIR=/tmp/sniffs
         php phpcs.phar --config-set installed_paths $SNIFFS_DIR
-        php phpcs.phar -p -s -v -n . --standard=WordPress-Core --extensions=php
+        php phpcs.phar -p -s -v -n . --standard=phpcs.xml.dist
