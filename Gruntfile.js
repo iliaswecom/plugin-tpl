@@ -2,7 +2,8 @@ module.exports = function( grunt ) {
 	var SOURCE_DIR     = 'src/',
 		BUILD_DIR      = 'build/',
 		BUILD_PACK_DIR = 'build/plugin-tpl',
-		VENDOR_DIR     = 'vendor/';
+		VENDOR_DIR     = 'vendor/',
+		path           = require('path');
 
 	grunt.initConfig({
 		pkg: grunt.file.readJSON( 'package.json' ),
@@ -22,7 +23,10 @@ module.exports = function( grunt ) {
 				files: [
 					SOURCE_DIR + '**',
 				],
-				tasks: ['copy:all'],
+				tasks: ['clean:dynamic', 'copy:dynamic'],
+				options: {
+					spawn: false,
+				},
 			}
 		},
 		copy: {
@@ -53,7 +57,13 @@ module.exports = function( grunt ) {
 				cwd: VENDOR_DIR + 'composer',
 				src: '**',
 				dest: BUILD_DIR + '<%= pkg.name %>/' + VENDOR_DIR + 'composer',
-			}
+			},
+			dynamic: {
+				expand: true,
+				cwd: SOURCE_DIR,
+				dest: BUILD_PACK_DIR,
+				src: []
+			},
 		},
 		compress: {
 			main: {
@@ -84,7 +94,7 @@ module.exports = function( grunt ) {
 			'copy:autoload',
 			'copy:composer'
 		]
-	)
+	);
 
 	grunt.registerTask(
 		'build',
@@ -92,5 +102,26 @@ module.exports = function( grunt ) {
 			'copy:all',
 			'compress'
 		]
-	)
+	);
+
+	grunt.event.on(
+		'watch',
+		function( action, filepath, target ) {
+			var src;
+
+			filepath = filepath.replace( /\\/g, '/' );
+			src      = [ path.relative( SOURCE_DIR, filepath ) ];
+
+			if ( ! src ) {
+				grunt.warn( 'Failed to determine the destination file.' );
+				return;
+			}
+
+			if ( action === 'deleted' ) {
+				grunt.config( [ 'clean', 'dynamic', 'src' ], src );
+			} else {
+				grunt.config( [ 'copy', 'dynamic', 'src' ], src );
+			}
+		}
+	);
 };
