@@ -11,7 +11,7 @@ module.exports = function( grunt ) {
 			all: BUILD_DIR,
 			dynamic: {
 				expand: true,
-				cwd: BUILD_DIR,
+				cwd: BUILD_PACK_DIR,
 				src: []
 			}
 		},
