@@ -12,20 +12,18 @@ Re-creating the same setup every time is annoying so I thought of creating an ea
 
 `composer install && npm install`
 
-Uses: [ESLint](https://eslint.org/), [stylelint](https://stylelint.io/), [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer), [PHPCompatibilityWP](https://github.com/PHPCompatibility/PHPCompatibilityWP), [WordPress Coding Standards](https://github.com/WordPress/WordPress-Coding-Standards), [node-composer-runner](https://www.npmjs.com/package/node-composer-runner), [copy-and-watch](https://www.npmjs.com/package/copy-and-watch), [zip-build](https://www.npmjs.com/package/zip-build)
+Search and replace the instances of `plugin-tpl`
 
 #### Available commands
-
-- `css:lint` - Lints all css inside the `src/css` directory.
-- `css:fix` - Fixes any issues inside the `src/css` directory.
-- `js:lint` - Lints all css inside the `src/js` directory.
-- `css:fix` - Fixes any issues inside the `src/js` directory.
-- `php:lint` - Lints all `.php` files inside the `src` directory.
-- `php:fix`  - Fixes all `.php` files inside the `src` directory.
+- `npm run lint` - Runs all lints.
+	- `php:lint` - Lints all `.php` files.
+	- `css:lint` - Lints all css files inside the `css` directory.
+	- `js:lint` - Lints all css files inside the `js` directory.
+- `npm run fix` - Runs all fixes.
+	- `php:fix`  - Fixes all `.php` files.
+	- `css:fix` - Fixes any issues inside the `css` directory.
+	- `js:fix` - Fixes any issues inside the `js` directory.
 - `php:compat` - Checks all `.php` files inside the `src` directory for compatibility with PHP 7.0+.
-- `lint` - Runs all previous mentioned lints.
-- `fix` - Runs all previous mentioned fixes.
-- `copy` - Copies all files from the `src/` directory into `build/{plugin-name}` directory.
-- `watch` - Watches for file changes in `src/` directory and copies files into `build/{plugin-name}` directory.
-- `zip` - Creates a `.zip` of `build/{plugin-name}` directory.
-- `build` - Single action for `copy` & `zip` commands.
+- `npm run copy` - Copies `css`, `js`, `php`, `vendor` directories & `{plugin-name}.php` into `build/{plugin-name}` directory.
+- `npm run watch` - Watches for file changes and runs `npm run copy`.
+- `npm run build` - Runs `npm run copy` and creates a `{plugin-name}.zip` inside the `build` directory.
