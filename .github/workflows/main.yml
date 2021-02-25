@@ -26,8 +26,6 @@ jobs:
           git clone -b master --depth 1 https://github.com/PHPCompatibility/PHPCompatibility.git $SNIFFS_DIR/PHPCompatibility
           git clone -b master --depth 1 https://github.com/PHPCompatibility/PHPCompatibilityWP.git $SNIFFS_DIR/PHPCompatibilityWP
           php phpcs.phar --config-set installed_paths $SNIFFS_DIR
-          php phpcs.phar --config-set installed_paths $SNIFFS_DIR/PHPCompatibility
-          php phpcs.phar --config-set installed_paths $SNIFFS_DIR/PHPCompatibilityWP
 
       - name: Log debug information
         run: |
@@ -40,10 +38,8 @@ jobs:
 
       - name: PHP Compatibility 7.0+
         run: |
-          export SNIFFS_DIR=/tmp/sniffs
           php phpcs.phar -p -s -v -n . --standard=phpcompat.xml.dist
 
       - name: Coding Standards
         run: |
-          export SNIFFS_DIR=/tmp/sniffs
           php phpcs.phar -p -s -v -n . --standard=phpcs.xml.dist
