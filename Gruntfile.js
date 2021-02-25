@@ -1,55 +1,83 @@
-module.exports = function(grunt) {
+module.exports = function( grunt ) {
+	var SOURCE_DIR     = 'src/',
+		BUILD_DIR      = 'build/',
+		BUILD_PACK_DIR = 'build/plugin-tpl',
+		VENDOR_DIR     = 'vendor/';
 
-	// Project configuration.
 	grunt.initConfig({
-		pkg: grunt.file.readJSON('package.json'),
+		pkg: grunt.file.readJSON( 'package.json' ),
+		clean: {
+			all: BUILD_DIR,
+			dynamic: {
+				expand: true,
+				cwd: BUILD_DIR,
+				src: []
+			}
+		},
+		watch: {
+			options: {
+				interval: 2000
+			},
+			all: {
+				files: [
+					SOURCE_DIR + '**',
+				],
+				tasks: ['copy:all'],
+			}
+		},
 		copy: {
 			plugin: {
 				expand: true,
-				cwd: 'src',
+				cwd: SOURCE_DIR,
 				src: '**',
-				dest: 'build/<%= pkg.name %>/',
+				dest: BUILD_DIR + '<%= pkg.name %>/',
 			},
 			analog: {
 				expand: true,
-				cwd: 'vendor/analog',
+				cwd: VENDOR_DIR + 'analog',
 				src: '**',
-				dest: 'build/<%= pkg.name %>/vendor/analog',
+				dest: BUILD_DIR + '<%= pkg.name %>/' + VENDOR_DIR + 'analog',
 			},
 			psr: {
 				expand: true,
-				cwd: 'vendor/psr',
+				cwd: VENDOR_DIR + 'psr',
 				src: '**',
-				dest: 'build/<%= pkg.name %>/vendor/psr',
+				dest: BUILD_DIR + '<%= pkg.name %>/' + VENDOR_DIR + 'psr',
 			},
 			autoload: {
-				src: 'vendor/autoload.php',
-				dest: 'build/<%= pkg.name %>/vendor/autoload.php',
+				src: VENDOR_DIR + 'autoload.php',
+				dest: BUILD_DIR + '<%= pkg.name %>/' + VENDOR_DIR + 'autoload.php',
 			},
 			composer: {
 				expand: true,
-				cwd: 'vendor/composer',
+				cwd: VENDOR_DIR + 'composer',
 				src: '**',
-				dest: 'build/<%= pkg.name %>/vendor/composer',
+				dest: BUILD_DIR + '<%= pkg.name %>/' + VENDOR_DIR + 'composer',
 			}
 		},
 		compress: {
 			main: {
 				options: {
 					mode: 'zip',
-					archive: 'build/<%= pkg.name %>.zip'
+					archive: BUILD_DIR + '<%= pkg.name %>.zip'
 				},
 				expand: true,
-				cwd: 'build/<%= pkg.name %>/',
+				cwd: BUILD_DIR + '<%= pkg.name %>/',
 				src: '**/*',
 				dest: '<%= pkg.name %>',
 			}
 		}
 	});
 
+	grunt.loadNpmTasks( 'grunt-contrib-watch' );
+	grunt.loadNpmTasks( 'grunt-contrib-clean' );
+	grunt.loadNpmTasks( 'grunt-contrib-copy' );
+	grunt.loadNpmTasks( 'grunt-contrib-compress' );
+
 	grunt.registerTask(
 		'copy:all',
 		[
+			'clean:all',
 			'copy:plugin',
 			'copy:analog',
 			'copy:psr',
@@ -65,9 +93,4 @@ module.exports = function(grunt) {
 			'compress'
 		]
 	)
-
-	grunt.loadNpmTasks('grunt-contrib-copy');
-	grunt.loadNpmTasks('grunt-contrib-compress');
-
-	grunt.registerTask('default', ['uglify']);
 };
