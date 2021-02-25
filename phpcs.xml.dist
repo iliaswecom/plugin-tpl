@@ -7,9 +7,12 @@
 	<arg name="basepath" value="./"/>
 	<arg name="parallel" value="20"/>
 	<arg value="ps"/>
-	<file>./src/</file>
+	<file>.</file>
 	<rule ref="WordPress-Core">
 		<exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
 		<exclude name="Generic.Files.LineEndings.InvalidEOLChar"/>
+		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase"/>
 	</rule>
+	<exclude-pattern>/node_modules/*</exclude-pattern>
+	<exclude-pattern>/vendor/*</exclude-pattern>
 </ruleset>

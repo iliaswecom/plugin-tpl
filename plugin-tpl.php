@@ -1,4 +1,4 @@
-<?php //phpcs:ignore -- \r\n notice.
+<?php
 
 /**
  * Plugin Name:       Plugin - Template
@@ -39,7 +39,6 @@ namespace Xkon;
  * Import necessary classes.
  */
 use Xkon\Plugin_Tpl\Admin\Menu;
-use Xkon\Plugin_Tpl\Logger;
 
 /**
  * Check that the file is not accessed directly.
@@ -95,6 +94,9 @@ class Plugin_Tpl {
 	 * Class constructor.
 	 */
 	public function __construct() {
+		// Composer autoload.
+		require_once __DIR__ . '/vendor/autoload.php';
+
 		// Set the plugin version.
 		self::$version = '1.0.0';
 
@@ -104,9 +106,6 @@ class Plugin_Tpl {
 		// Set the plugin url.
 		self::$url = plugin_dir_url( __FILE__ );
 
-		// Autoload PHP classes.
-		$this->autoload_php_classes();
-
 		// Create the admin menus.
 		Menu::create();
 
@@ -115,44 +114,6 @@ class Plugin_Tpl {
 
 		// Add Rest API endpoints.
 		add_action( 'rest_api_init', array( '\\Xkon\\Plugin_Tpl\\REST\\Routes', 'register' ) );
-	}
-
-	/**
-	 * Autoloads all PHP classes under the namespace used.
-	 */
-	public function autoload_php_classes() {
-		spl_autoload_register(
-			function( $class_name ) {
-				// Only autoload classes from this namespace.
-				if ( false === strpos( $class_name, __NAMESPACE__ ) ) {
-					return;
-				}
-
-				// Remove namespace from class name.
-				$class_file = str_replace( get_class( $this ) . '\\', '', $class_name );
-
-				// Convert class name format to file name format.
-				$class_file = strtolower( $class_file );
-				$class_file = str_replace( '_', '-', $class_file );
-
-				// Convert sub-namespaces into directories.
-				$class_path = explode( '\\', $class_file );
-				$class_file = array_pop( $class_path );
-				$class_path = implode( '/', $class_path );
-
-				// Setup the final file to require.
-				if ( empty( $class_path ) ) {
-					$file = self::$dir . '/php/' . '/class-' . $class_file . '.php';
-				} else {
-					$file = self::$dir . '/php/' . $class_path . '/class-' . $class_file . '.php';
-				}
-
-				// Load the class.
-				if ( file_exists( $file ) ) {
-					require_once $file;
-				}
-			}
-		);
 	}
 
 	/**

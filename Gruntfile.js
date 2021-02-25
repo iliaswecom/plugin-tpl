@@ -1,7 +1,9 @@
 module.exports = function( grunt ) {
-	var SOURCE_DIR     = 'src/',
-		BUILD_DIR      = 'build/',
-		VENDOR_DIR     = 'vendor/';
+	var BUILD_DIR  = 'build/',
+		CSS_DIR    = 'css/',
+		JS_DIR     = 'js/',
+		PHP_DIR    = 'php/',
+		VENDOR_DIR = 'vendor/';
 
 	grunt.initConfig({
 		pkg: grunt.file.readJSON( 'package.json' ),
@@ -14,7 +16,10 @@ module.exports = function( grunt ) {
 			},
 			all: {
 				files: [
-					SOURCE_DIR + '**',
+					CSS_DIR + '**',
+					JS_DIR + '**',
+					PHP_DIR + '**',
+					'<%= pkg.name %>.php'
 				],
 				tasks: ['clean:all', 'copy:all'],
 				options: {
@@ -24,10 +29,26 @@ module.exports = function( grunt ) {
 		},
 		copy: {
 			plugin: {
-				expand: true,
-				cwd: SOURCE_DIR,
-				src: '**',
+				src: '<%= pkg.name %>.php',
 				dest: BUILD_DIR + '<%= pkg.name %>/',
+			},
+			css: {
+				expand: true,
+				cwd: CSS_DIR,
+				src: '**',
+				dest: BUILD_DIR + '<%= pkg.name %>/' + CSS_DIR,
+			},
+			js: {
+				expand: true,
+				cwd: JS_DIR,
+				src: '**',
+				dest: BUILD_DIR + '<%= pkg.name %>/' + JS_DIR,
+			},
+			php: {
+				expand: true,
+				cwd: PHP_DIR,
+				src: '**',
+				dest: BUILD_DIR + '<%= pkg.name %>/' + PHP_DIR,
 			},
 			analog: {
 				expand: true,
@@ -76,6 +97,9 @@ module.exports = function( grunt ) {
 		[
 			'clean:all',
 			'copy:plugin',
+			'copy:css',
+			'copy:js',
+			'copy:php',
 			'copy:analog',
 			'copy:psr',
 			'copy:autoload',

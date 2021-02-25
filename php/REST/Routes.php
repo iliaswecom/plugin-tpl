@@ -1,12 +1,4 @@
-<?php //phpcs:ignore -- \r\n notice.
-
-/**
- * This file comes with "plugin-tpl".
- * Author:      Konstantinos Xenos
- * Author URI:  https://xkon.dev
- * License:     GPLv2 or later
- * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- */
+<?php
 
 /**
  * Set namespace.
