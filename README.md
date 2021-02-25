@@ -4,7 +4,7 @@ Re-creating the same setup every time is annoying so I thought of creating an ea
 
 ---
 
-![Tests](https://github.com/mrxkon/plugin-tpl/workflows/Main_Checks/badge.svg)
+![Tests](https://github.com/mrxkon/plugin-tpl/workflows/Checks/badge.svg)
 [![PHP Compatibility 7.0+](https://img.shields.io/badge/PHP%20Compatibility-7.0+-8892BF)](https://github.com/PHPCompatibility/PHPCompatibility)
 [![WordPress Coding Standards](https://img.shields.io/badge/WordPress%20Coding%20Standards-latest-blue)](https://github.com/WordPress/WordPress-Coding-Standards)
 
