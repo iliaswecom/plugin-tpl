@@ -8,5 +8,8 @@
 	<arg name="parallel" value="20"/>
 	<arg value="ps"/>
 	<file>./src/</file>
-	<rule ref="WordPress-Core"/>
+	<rule ref="WordPress-Core">
+		<exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
+		<exclude name="Generic.Files.LineEndings.InvalidEOLChar"/>
+	</rule>
 </ruleset>
