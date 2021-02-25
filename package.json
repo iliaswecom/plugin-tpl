@@ -13,18 +13,17 @@
 		"php:compat": "composer-runner compat",
 		"lint": "npm run php:lint && npm run js:lint && npm run css:lint",
 		"fix": "npm run php:fix && npm run js:fix && npm run css:fix",
-		"copy": "copy-and-watch --clean \"src/**/*\" \"build/plugin-tpl\"",
-		"watch": "copy-and-watch --clean --watch \"src/**/*\" \"build/plugin-tpl\"",
-		"zip": "zip-build -t=%NAME%.%EXT% build/plugin-tpl build",
-		"build": "npm run copy && npm run zip"
+		"copy": "grunt copy:all",
+		"build": "grunt build"
 	},
 	"devDependencies": {
 		"@wordpress/eslint-plugin": "^8.0.2",
 		"@wordpress/stylelint-config": "^19.0.1",
-		"copy-and-watch": "^0.1.5",
 		"eslint": "^7.20.0",
+		"grunt": "^1.3.0",
+		"grunt-contrib-compress": "^2.0.0",
+		"grunt-contrib-copy": "^1.0.0",
 		"node-composer-runner": "^0.4.0",
-		"stylelint": "^13.11.0",
-		"zip-build": "^1.3.0"
+		"stylelint": "^13.11.0"
 	}
 }
