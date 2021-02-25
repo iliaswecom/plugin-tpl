@@ -13,9 +13,9 @@
 		"php:compat": "composer-runner compat",
 		"lint": "npm run php:lint && npm run js:lint && npm run css:lint",
 		"fix": "npm run php:fix && npm run js:fix && npm run css:fix",
-		"copy": "grunt copy:all",
-		"build": "grunt build",
-		"watch": "grunt watch:all"
+		"copy": "composer dumpautoload -o && grunt copy:all",
+		"build": "composer dumpautoload -o && grunt build",
+		"watch": "composer dumpautoload -o && grunt watch:all"
 	},
 	"devDependencies": {
 		"@wordpress/eslint-plugin": "^8.0.2",
