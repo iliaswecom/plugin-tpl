@@ -34,8 +34,8 @@ class Menu {
 	 */
 	public static function populate() {
 		add_menu_page(
-			'Plugin Tpl Page Title',
-			'Plugin Tpl',
+			'Plugin - Template',
+			'Plugin - Template',
 			'manage_options',
 			'plugin-tpl',
 			array( '\\Xkon\\Plugin_Tpl\\Admin\\Page', 'load' ),
