@@ -12,7 +12,7 @@ Re-creating the same setup every time is annoying so I thought of creating an ea
 
 `composer install && npm install`
 
-Search and replace the instances of `plugin-tpl`
+Edit package.json & change appropriate strings to match the new project
 
 #### Available commands
 - `npm run lint` - Runs all lints.
