@@ -1,5 +1,5 @@
 <?php
-
+ 
 /**
  * Plugin Name:       Plugin - Template
  * Plugin URI:        https://github.com/mrxkon/plugin-tpl
