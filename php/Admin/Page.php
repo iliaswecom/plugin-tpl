@@ -38,8 +38,8 @@ class Page {
 			'three',
 		);
 		$two = array(
-			'one' => 'one',
-			'two' => 'two',
+			'one'   => 'one',
+			'two'   => 'two',
 			'three' => 123,
 		);
 		Logger::log( 'my string' );
