@@ -21,6 +21,7 @@
 		"copy": "composer dumpautoload -o && grunt copy:all",
 		"build": "composer dumpautoload -o && grunt build",
 		"watch": "composer dumpautoload -o && grunt watch:all"
+		"php:check": "find . \\( -path ./build -o -path ./vendor \\) -prune -false -o -type f -name \"*.php\" -exec php -l {} \\; | (! grep -v \"No syntax errors detected\" )"
 	},
 	"devDependencies": {
 		"@wordpress/eslint-plugin": "^8.0.2",
