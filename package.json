@@ -19,7 +19,7 @@
 		"lint": "npm run php:lint && npm run js:lint && npm run css:lint",
 		"fix": "npm run php:fix && npm run js:fix && npm run css:fix",
 		"copy": "composer dumpautoload -o && grunt copy:all",
-		"build": "composer dumpautoload -o && grunt build",
+		"build": "composer dumpautoload -o && npm run php:check && grunt build",
 		"watch": "composer dumpautoload -o && grunt watch:all",
 		"php:check": "find . \\( -path ./build -o -path ./vendor \\) -prune -false -o -type f -name \"*.php\" -exec php -l {} \\; | (! grep -v \"No syntax errors detected\" )"
 	},
