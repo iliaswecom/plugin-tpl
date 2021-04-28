@@ -1,9 +1,9 @@
 {
 	"name": "plugin-tpl",
-	"destName": "sms-notifications-for-woocommerce", // Change to desired plugin directory name
-	"baseNamespace": "Wecom", // Change to desired base namespace
-	"baseClass": "Smswn_Plugin", // Change to desired base class for the plugin
-	"pluginName": "SMS Notifications for Woocommerce", // Change to desired title for the plugin
+	"destName": "sms-notifications-for-woocommerce",
+	"baseNamespace": "Wecom",
+	"baseClass": "Smswn_Plugin",
+	"pluginName": "SMS Notifications for Woocommerce",
 	"companyWebsite": "https://wecommerce.gr",
 	"version": "1.0.0",
 	"description": "plugin template",
@@ -20,7 +20,7 @@
 		"fix": "npm run php:fix && npm run js:fix && npm run css:fix",
 		"copy": "composer dumpautoload -o && grunt copy:all",
 		"build": "composer dumpautoload -o && grunt build",
-		"watch": "composer dumpautoload -o && grunt watch:all"
+		"watch": "composer dumpautoload -o && grunt watch:all",
 		"php:check": "find . \\( -path ./build -o -path ./vendor \\) -prune -false -o -type f -name \"*.php\" -exec php -l {} \\; | (! grep -v \"No syntax errors detected\" )"
 	},
 	"devDependencies": {
